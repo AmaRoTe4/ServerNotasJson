@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
-import { PORT } from "./src/config/config.js"
 import router from "./src/routes/routes.js";
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express();
 
@@ -14,4 +16,6 @@ app.get('/', (req, res)=>{
     res.send("running")
 })
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT ,() => {
+    console.log(`listening on port ${process.env.PORT}`)
+})
